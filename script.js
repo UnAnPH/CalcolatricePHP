@@ -127,7 +127,7 @@ function onClickDiv() {
 //onClick modifica numeri
 //#region
 function onClickRec() {
-  if (operandoType == 2) { opHiddenIndex++; }
+  if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "rec(";
   refreshDisplay();
   operandoType = 3;
@@ -136,7 +136,10 @@ function onClickRec() {
 function onClickpiumeno() {
   strDisplay += "(-";
   refreshDisplay();
-
+}
+function onClickVirg() {
+  strDisplay += ".";
+  refreshDisplay();
 }
 //#endregion
 
@@ -145,128 +148,114 @@ function onClickpiumeno() {
 function onClickCos() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "cos(";
-
   operandoType = 3;
-  insertOpHidden("cos(");
+  insertOpSpec("cos");
   refreshDisplay();
 }
 function onClickSin() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "sin(";
-
   operandoType = 3;
-  insertOpHidden("sin(");
+  insertOpSpec("sin");
   refreshDisplay();
 }
 function onClickTan() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "tan(";
-
   operandoType = 3;
-  insertOpHidden("tan(");
+  insertOpSpec("tan");
   refreshDisplay();
 }
 function onClickAcos() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "acos(";
-
   operandoType = 3;
-  insertOpHidden("acos(");
+  insertOpSpec("acos");
   refreshDisplay();
 }
 function onClickAsin() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "asin(";
-
   operandoType = 3;
-  insertOpHidden("asin(");
+  insertOpSpec("asin");
   refreshDisplay();
 }
 function onClickAtan() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "atan(";
-
   operandoType = 3;
-  insertOpHidden("atan(");
+  insertOpSpec("atan");
   refreshDisplay();
 }
 function onClickLog() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "log10(";
-
   operandoType = 3;
-  insertOpHidden("log10(");
+  insertOpSpec("log10");
   refreshDisplay();
 }
 function onClickLn() {
   if (operandoType != 1) { opHiddenIndex++; }
   operandoType = 3;
-  insertOpHidden("ln(");
+  insertOpSpec("ln");
   strDisplay += "ln(";
   refreshDisplay();
 }
 function onClickfatt() { //transform in gmp_fact
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "fact(";
-
   operandoType = 3;
-  insertOpHidden("fact(");
+  insertOpSpec("fact");
   refreshDisplay();
 }
 function onClickRadX() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "radX(";
-
   operandoType = 3;
-  insertOpHidden("radX(");
+  insertOpSpec("radx");
   refreshDisplay();
 }
 function onCLickRadQuad() {//transform in sqrt
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "rad2(";
-
   operandoType = 3;
-  insertOpHidden("rad2(");
+  insertOpSpec("rad2");
   refreshDisplay();
 }
 function onClickElevX() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "pow(";
-
   operandoType = 3;
-  insertOpHidden("pow(");
+  insertOpSpec("pow");
   refreshDisplay();
 }
 function onClickElevQuad() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "pow2(";
-
   operandoType = 3;
-  insertOpHidden("pow2(");
+  insertOpSpec("pow2");
   refreshDisplay();
 }
 function onClickConvInRad() { //transform in deg2rad
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "conv(";
-
   operandoType = 3;
-  insertOpHidden("conv(");
+  insertOpSpec("conv");
   refreshDisplay();
 }
-function onClickVirg() {
-  strDisplay += ".";
-  refreshDisplay();
-}
+
 //#endregion
 
 //onClick parentesi
 //#region 
 function onClickOpenPar() {
+  if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "(";
   insertOpHidden("(");
   refreshDisplay();
 }
 function onClickClosePar() {
+  if (operandoType == 1) { opHiddenIndex++; }
   strDisplay += ")";
   insertOpHidden(")");
   refreshDisplay();
@@ -293,7 +282,8 @@ function onClickaddMem() {
 //#region 
 function onClickClearAll() {
   strDisplay = "";
-  opHidden = opHidden.filter(function () { return true });
+  opHidden = [];
+  opHiddenIndex=0;
   refreshDisplay();
 }
 function onClickClearOne() {
@@ -329,6 +319,12 @@ function insertOpHidden(stringa) {
   else {
     opHidden[opHiddenIndex] += stringa;
   }
+}
+
+function insertOpSpec(stringa){
+  insertOpHidden(stringa);
+  opHiddenIndex++;
+  insertOpHidden("(");
 }
 
 
