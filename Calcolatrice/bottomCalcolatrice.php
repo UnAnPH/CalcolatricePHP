@@ -1,7 +1,7 @@
              
                 <div class="vuoto"></div>
-             
-#divPulsanti    <div class="coseno"><button class="button" onclick="onClickCos()">cos</button></div>
+<!--  #divPulsanti   -->       
+                <div class="coseno"><button class="button" onclick="onClickCos()">cos</button></div>
                 <div class="seno"><button class="button" onclick="onClickSin()">sin</button></div>
                 <div class="tangente"><button class="button" onclick="onClickTan()">tan</button></div>
                 <div class="arcocoseno"><button class="button" onclick="onClickAcos()">acos</button></div>
@@ -37,9 +37,10 @@
                 <div class="chiudiPar"><button class="button" onclick="onClickClosePar()">)</button></div>
                 <div class="convInRad"><button class="button" onclick="onClickConvInRad()">°>rad</button></div>
                 <div class="esp"><button class="button" id="esp" onclick="onClickEsp()" disabled>esp</button></div> 
-#divPulsanti
+<!--  #divPulsanti   -->  
 
-#divMem                <div class="getMem">
+<!--  #divPulsanti   -->                 
+                                <div class="getMem">
                         <form action="index.php" method="POST">
                                 <input type="submit" name="getMem" value="M" class="button" onclick="onClickGetMem()">
                         </form>
@@ -56,7 +57,7 @@
                                 <input type="submit" name="addMem" value="M+" class="button" onclick="onClickaddMem()">
                         </form>
                 </div>
-#divMem
+<!--  #divPulsanti   -->  
                 <div class="uguale">
                         <form action="index.php" method="POST">
                                 <input type="hidden" id="ris" name="ris" value="" />
