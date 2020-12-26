@@ -104,7 +104,6 @@ function onClickadd() {
 function onCLicksott() {
   if (operandoType == 1) { opHiddenIndex++; }
   operandoType = 2;
-  opHiddenIndex++;
   strDisplay += "-";
   insertOpHidden("-");
   refreshDisplay();
@@ -112,7 +111,6 @@ function onCLicksott() {
 function onClickmol() {
   if (operandoType == 1) { opHiddenIndex++; }
   operandoType = 2;
-  opHiddenIndex++;
   strDisplay += "*";
   insertOpHidden("*");
   refreshDisplay();
@@ -120,7 +118,6 @@ function onClickmol() {
 function onClickDiv() {
   if (operandoType == 1) { opHiddenIndex++; }
   operandoType = 2;
-  opHiddenIndex++;
   strDisplay += "/";
   insertOpHidden("/");
   refreshDisplay();
@@ -296,7 +293,7 @@ function onClickaddMem() {
 //#region 
 function onClickClearAll() {
   strDisplay = "";
-  opHidden.length = 0;
+  opHidden = opHidden.filter(function () { return true });
   refreshDisplay();
 }
 function onClickClearOne() {
@@ -314,6 +311,8 @@ function onClickUguale() {
 function risToStrDisplay() {
   var ris = document.getElementById("upperDisplay");
   strDisplay = ris.textContent;
+}
+
 function refreshDisplay() {
   // if(checkString()){
   document.getElementById('upperDisplay').innerHTML = strDisplay;
@@ -352,7 +351,7 @@ function checkOperazione(carattere) {
   }
 }
 
-function checkOperazioneSpeciale(caratteree) {
+function checkOperazioneSpeciale(carattere) {
   var i = 0;
 
   while (i < operazioni.length && carattere != operazioni[i]) {
