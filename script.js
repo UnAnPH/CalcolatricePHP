@@ -1,3 +1,5 @@
+//variables Definition
+
 var operazioni = ['+', '-', '*', '/'];
 
 var strDisplay = "";
@@ -12,7 +14,9 @@ var boolVirg = false;
 var operandoType = 0;
 
 //onClick listeners
+
 //onClick Numeri
+//#region
 function onClickUno() {
   if (operandoType != 1) { opHiddenIndex++; }
   operandoType = 1;
@@ -21,6 +25,7 @@ function onClickUno() {
   insertOpHidden("1");
   refreshDisplay();
 }
+
 function onClickDue() {
   if (operandoType != 1) { opHiddenIndex++; }
   operandoType = 1;
@@ -85,9 +90,10 @@ function onCLickZero() {
   insertOpHidden("0");
   refreshDisplay();
 }
+//#endregion
 
 //onClick operazioni
-
+//#region
 function onClickadd() {
   if (operandoType == 1) { opHiddenIndex++; }
   operandoType = 2;
@@ -119,10 +125,10 @@ function onClickDiv() {
   insertOpHidden("/");
   refreshDisplay();
 }
-
+//#endregion
 
 //onClick modifica numeri
-
+//#region
 function onClickRec() {
   if (operandoType == 2) { opHiddenIndex++; }
   strDisplay += "rec(";
@@ -135,9 +141,10 @@ function onClickpiumeno() {
   refreshDisplay();
 
 }
+//#endregion
 
 //onClick operazioni speciali
-
+//#region
 function onClickCos() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "cos(";
@@ -253,9 +260,10 @@ function onClickVirg() {
   strDisplay += ".";
   refreshDisplay();
 }
+//#endregion
 
 //onClick parentesi
-
+//#region 
 function onClickOpenPar() {
   strDisplay += "(";
   insertOpHidden("(");
@@ -265,12 +273,11 @@ function onClickClosePar() {
   strDisplay += ")";
   insertOpHidden(")");
   refreshDisplay();
-
 }
-
+//#endregion
 
 //onClick memoria
-
+//#region
 function onClickGetMem() {
   var div = document.getElementById("dom-target");
   var myData = div.textContent;
@@ -283,9 +290,10 @@ function onClickaddMem() {
   var elem = document.getElementById("ris");
   elem.value = "1+2+cos(90)";
 }
+//#endregion
 
-//onClick sistema
-
+//onClick Clear
+//#region 
 function onClickClearAll() {
   strDisplay = "";
   opHidden.length = 0;
@@ -294,19 +302,40 @@ function onClickClearAll() {
 function onClickClearOne() {
   strDisplay = strDisplay.slice(0, -1);
   refreshDisplay();
-
-
 }
+//#endregion
+
+//onClick sistema
 function onClickUguale() {
   var elem = document.getElementById("ris");
   elem.value = strDisplay;
-
 }
 
-function formatString() {
+function risToStrDisplay() {
+  var ris = document.getElementById("upperDisplay");
+  strDisplay = ris.textContent;
+function refreshDisplay() {
+  // if(checkString()){
+  document.getElementById('upperDisplay').innerHTML = strDisplay;
+  // }else{
 
+  // }
+  document.getElementById('lowerDisplay').innerHTML = opHidden.join();
 }
 
+function insertOpHidden(stringa) {
+  if (opHidden[opHiddenIndex] == 'undefined' || opHidden[opHiddenIndex] == null) {
+    opHidden[opHiddenIndex] = stringa;
+  }
+  else {
+    opHidden[opHiddenIndex] += stringa;
+  }
+}
+
+
+
+//checking functions
+//#region 
 function checkString() { }
 
 
@@ -335,30 +364,10 @@ function checkOperazioneSpeciale(carattere) {
     return true;
   }
 }
+//#endregion
 
-function refreshDisplay() {
-  // if(checkString()){
-  document.getElementById('upperDisplay').innerHTML = strDisplay;
-  // }else{
-
-  // }
-  document.getElementById('lowerDisplay').innerHTML = opHidden.join();
-}
-
-function insertOpHidden(stringa) {
-  if (opHidden[opHiddenIndex] == 'undefined' || opHidden[opHiddenIndex] == null) {
-    opHidden[opHiddenIndex] = stringa;
-  }
-  else {
-    opHidden[opHiddenIndex] += stringa;
-  }
-}
-
-function risToStrDisplay() {
-  var ris = document.getElementById("upperDisplay");
-  strDisplay = ris.textContent;
-}
-
+//Button enabler
+//#region 
 function disableButton() {
   var elem = document.getElementById("esp");
   elem.disabled = true;
@@ -367,6 +376,7 @@ function enableButton() {
   var elem = document.getElementById("esp");
   elem.disabled = false;
 }
+//#endregion
 
 
 

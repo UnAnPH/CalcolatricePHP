@@ -1,3 +1,5 @@
+/* grid-area definition */
+/*#region*/
 .piumeno {
   grid-area: piumeno;
 }
@@ -164,6 +166,10 @@
 
 #display {
   grid-area: display;
+}
+/*#endregion*/
+
+#display{
   border-style: solid;
   width: auto;
   height: 100px;
