@@ -139,6 +139,7 @@ function onClickpiumeno() {
 }
 function onClickVirg() {
   strDisplay += ".";
+  insertOpHidden(".");
   refreshDisplay();
 }
 //#endregion
@@ -326,8 +327,6 @@ function insertOpSpec(stringa){
   opHiddenIndex++;
   insertOpHidden("(");
 }
-
-
 
 //checking functions
 //#region 
