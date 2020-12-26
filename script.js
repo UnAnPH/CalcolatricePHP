@@ -352,7 +352,7 @@ function checkOperazione(carattere) {
   }
 }
 
-function checkOperazioneSpeciale(carattere) {
+function checkOperazioneSpeciale(caratteree) {
   var i = 0;
 
   while (i < operazioni.length && carattere != operazioni[i]) {
