@@ -1,42 +1,55 @@
 <html>
-    <head>
+
+<head>
     <link rel="stylesheet" href="CSS/style.css">
     <script src="script.js"></script>
     <?php include_once 'Calcolatrice.php'; ?>
-    </head>
+</head>
 
-    <body>
-        <header></header>
-            
-        <section>
+<body>
+    <header></header>
 
-            <?php
-                if($_POST){?>
-                     <div class="calcolatrice-container"> 
-                    <?php if (isset($_POST['ris'])) { ?>
-                        <div id="display"><?php echo htmlspecialchars(evalString($_POST["ris"])); ?></div>
-                    <?php echo risToStrDisplay(); }
-                    elseif (isset($_POST['setMem'])) { ?>
-                        <div id="display"></div> <?php 
-                    }elseif (isset($_POST['addMem'])){ ?>
-                        <div  id="display"></div><?php 
-                    }elseif (isset($_POST['getMem'])){?>
-                        <div  id="display"></div>
-                        <div id="dom-target" style="display: none;"> 
+    <section>
+
+        <?php
+        if ($_POST) { ?>
+            <div class="calcolatrice-container">
+                <?php if (isset($_POST['ris'])) { ?>
+                    <div id="display">
+                        <div id="upperDisplay"><?php echo htmlspecialchars(evalString($_POST["ris"])); ?></div>
+                        <div id="lowerDisplay"></div>
+                    </div>
+                <?php echo risToStrDisplay();
+                } elseif (isset($_POST['setMem'])) { ?>
+                    <div id="display">
+                        <div id="upperDisplay"></div>
+                        <div id="lowerDisplay"></div>
+                    </div> <?php
+                        } elseif (isset($_POST['addMem'])) { ?>
+                    <div id="display">
+                        <div id="upperDisplay"></div>
+                        <div id="lowerDisplay"></div>
+                    </div><?php
+                        } elseif (isset($_POST['getMem'])) { ?>
+                    <div id="display">
+                        <div id="upperDisplay"></div>
+                        <div id="lowerDisplay"></div>
+                    </div>
+                    <div id="dom-target" style="display: none;">
                         <?php echo htmlspecialchars($output); ?></div> <?php
-                    }
-                     include 'Calcolatrice/bottomCalcolatrice.php'; 
+                                                                    }
+                                                                    include 'Calcolatrice/bottomCalcolatrice.php';
+                                                                } else {  ?>
+                <div class="calcolatrice-container">
+                    <div id="display"></div>
+                <?php include 'Calcolatrice/bottomCalcolatrice.php';
+                                                                }
+                ?>
 
-                } else{  ?>
-                    <div class="calcolatrice-container">
-                    <div  id="display"></div>
-                    <?php include 'Calcolatrice/bottomCalcolatrice.php'; 
-                     } 
-            ?>
+    </section>
+    <footer>
 
-                </section>
-        <footer>
+    </footer>
+</body>
 
-        </footer>
-    </body>
 </html>

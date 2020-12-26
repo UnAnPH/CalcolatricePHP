@@ -1,312 +1,372 @@
-    var operazioni= ['+','-','*','/'];
-    
-    var strDisplay="";
-    var opHidden=[];
-    var opHiddenIndex=0;
+var operazioni = ['+', '-', '*', '/'];
 
-    var lastOperation="";
-    var lastSpecialOperation="";
-    var lastNumber="";
+var strDisplay = "";
+var opHidden = [];
+var opHiddenIndex = -1;
 
+var lastOperation = "";
+var lastSpecialOperation = "";
+var lastNumber = "";
 
-    var operandoType=0;
+var boolVirg = false;
+var operandoType = 0;
 
-    //onClick listeners
-    //onClick Numeri
-    function onClickUno(){
-      if(operandoType!=1){opHiddenIndex++;}
-      operandoType=1;
-      strDisplay+="1";
-      opHidden[opHiddenIndex]+="1";
-      refreshDisplay();
-    }
-    function onClickDue(){
-      if(operandoType!=1){opHiddenIndex++;}
-      operandoType=1;
-      strDisplay += "2";
-      opHidden[opHiddenIndex]+="2";
-      refreshDisplay(); 
-    }
-    function onClickTre(){
-      if(operandoType!=1){opHiddenIndex++;}
-      operandoType=1;
-      strDisplay += "3";
-      opHidden[opHiddenIndex]+="3";
-      refreshDisplay(); 
-    }
-    function onClickQuattro(){
-      if(operandoType!=1){opHiddenIndex++;}
-      operandoType=1;
-      strDisplay += "4";
-      opHidden[opHiddenIndex]+="4";
-      refreshDisplay(); 
-    }
-    function onClickCinque(){
-      if(operandoType!=1){opHiddenIndex++;}
-      operandoType=1;
-      strDisplay += "5";
-      opHidden[opHiddenIndex]+="5";
-      refreshDisplay(); 
-    }
-    function onClickSei(){
-      if(operandoType!=1){opHiddenIndex++;}
-      operandoType=1;
-      strDisplay += "6";
-      opHidden[opHiddenIndex]+="6";
-      refreshDisplay(); 
-    }
-    function onClickSette(){
-      if(operandoType!=1){opHiddenIndex++;}
-      operandoType=1;
-      strDisplay += "7";
-      opHidden[opHiddenIndex]+="7";
-      refreshDisplay(); 
-    }
-    function onClickOtto(){
-      if(operandoType!=1){opHiddenIndex++;}
-      operandoType=1;
-      strDisplay += "8";
-      opHidden[opHiddenIndex]+="8";
-      refreshDisplay(); 
-    }
-    function onClickNove(){
-      if(operandoType!=1){opHiddenIndex++;}
-      operandoType=1;
-      strDisplay += "9";
-      opHidden[opHiddenIndex]+="9";
-      refreshDisplay(); 
-    }
-    function onCLickZero(){
-      if(operandoType!=1){opHiddenIndex++;}
-      operandoType=1;
-      strDisplay += "0";
-      opHidden[opHiddenIndex]+="0";
+//onClick listeners
+//onClick Numeri
+function onClickUno() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 1;
+  strDisplay += "1";
 
-      refreshDisplay(); 
-    }
+  insertOpHidden("1");
+  refreshDisplay();
+}
+function onClickDue() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 1;
+  strDisplay += "2";
 
-    //onClick operazioni
+  insertOpHidden("2");
+  refreshDisplay();
+}
+function onClickTre() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 1;
+  strDisplay += "3";
+  insertOpHidden("3");
+  refreshDisplay();
+}
+function onClickQuattro() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 1;
+  strDisplay += "4";
+  insertOpHidden("4");
+  refreshDisplay();
+}
+function onClickCinque() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 1;
+  strDisplay += "5";
+  insertOpHidden("5");
+  refreshDisplay();
+}
+function onClickSei() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 1;
+  strDisplay += "6";
+  insertOpHidden("6");
+  refreshDisplay();
+}
+function onClickSette() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 1;
+  strDisplay += "7";
+  insertOpHidden("7");
+  refreshDisplay();
+}
+function onClickOtto() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 1;
+  strDisplay += "8";
+  insertOpHidden("8");
+  refreshDisplay();
+}
+function onClickNove() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 1;
+  strDisplay += "9";
+  insertOpHidden("9");
+  refreshDisplay();
+}
+function onCLickZero() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 1;
+  strDisplay += "0";
+  insertOpHidden("0");
+  refreshDisplay();
+}
 
-    function onClickadd(){
-      operandoType=2;
-        opHiddenIndex++;
-        opHidden[opHiddenIndex]+="+";
-        strDisplay += "+";
-        refreshDisplay(); 
-    }
-    function onCLicksott(){
-      operandoType=2;
-      opHiddenIndex++;
-      strDisplay += "-";
-      opHidden[opHiddenIndex]+="-";
-      refreshDisplay(); 
-    }
-    function onClickmol(){
-      operandoType=2;
-      opHiddenIndex++;
-      strDisplay += "*";
-      opHidden[opHiddenIndex]+="*";
-      refreshDisplay(); 
-    }
-    function onClickDiv(){
-      operandoType=2;
-      opHiddenIndex++;
-      strDisplay += "/";
-      opHidden[opHiddenIndex]+="/";
-      refreshDisplay(); 
-    }
+//onClick operazioni
 
-    //onClick modifica numeri
-
-    function onClickRec(){ 
-      strDisplay +="rec(";
-      refreshDisplay(); 
-      
-    }
-    function onClickpiumeno(){
-      strDisplay += "(-";
-      refreshDisplay(); 
-      
-    }
-
-    //onClick operazioni speciali
-
-    function onClickCos(){
-      strDisplay += "cos(";
-      refreshDisplay(); 
-      
-    }
-    function  onClickSin(){
-      strDisplay += "sin(";
-      refreshDisplay(); 
-      
-    }
-    function onClickTan(){
-      strDisplay += "tan(";
-      refreshDisplay(); 
-      
-    }
-    function  onClickAcos(){
-      strDisplay +="acos(";
-      refreshDisplay(); 
-      
-    }
-    function  onClickAsin(){
-      strDisplay +="asin(";
-      refreshDisplay(); 
-      
-    }
-    function  onClickAtan(){
-      strDisplay += "atan(";
-      refreshDisplay(); 
-      
-    }
-    function onClickLog(){
-      strDisplay += "log10(";
-      refreshDisplay(); 
-      
-    }
-    function onClickLn(){
-      strDisplay += "log(";
-      refreshDisplay(); 
-      
-    }
-    function  onClickfatt(){ //transform in gmp_fact
-      strDisplay += "gmp_fact(";
-      refreshDisplay(); 
-      
-    }
-    function onClickRadX(){
-      strDisplay += "radX(";
-      refreshDisplay(); 
-      
-    }
-    function onCLickRadQuad(){//transform in sqrt
-      strDisplay += "rad2(";
-      refreshDisplay(); 
-      
-    }
-    function onClickElevX(){
-      strDisplay +="pow(";
-      refreshDisplay(); 
-      
-    }
-    function onClickElevQuad(){
-      strDisplay += "pow2(";
-      refreshDisplay(); 
-      
-    }
-    function onClickConvInRad(){ //transform in deg2rad
-      strDisplay += "conv(";
-      refreshDisplay(); 
-      
-    }
-
-    //onClick parentesi
-
-    function onClickOpenPar(){
-      strDisplay +=  "(";
-      refreshDisplay(); 
-     
-    }
-    function onClickClosePar(){
-      strDisplay += ")";
-      refreshDisplay(); 
-      
-    }
+function onClickadd() {
+  if (operandoType == 1) { opHiddenIndex++; }
+  operandoType = 2;
+  strDisplay += "+";
+  insertOpHidden("+");
+  refreshDisplay();
+}
+function onCLicksott() {
+  if (operandoType == 1) { opHiddenIndex++; }
+  operandoType = 2;
+  opHiddenIndex++;
+  strDisplay += "-";
+  insertOpHidden("-");
+  refreshDisplay();
+}
+function onClickmol() {
+  if (operandoType == 1) { opHiddenIndex++; }
+  operandoType = 2;
+  opHiddenIndex++;
+  strDisplay += "*";
+  insertOpHidden("*");
+  refreshDisplay();
+}
+function onClickDiv() {
+  if (operandoType == 1) { opHiddenIndex++; }
+  operandoType = 2;
+  opHiddenIndex++;
+  strDisplay += "/";
+  insertOpHidden("/");
+  refreshDisplay();
+}
 
 
-    //onClick memoria
+//onClick modifica numeri
 
-    function onClickGetMem(){
-      var div = document.getElementById("dom-target");
-      var myData = div.textContent;
-    }
-    function onClickSetMem(){
-      var elem = document.getElementById("ris");
-      elem.value = "1+2+cos(90)";
-    }
-    function onClickaddMem(){
-      var elem = document.getElementById("ris");
-      elem.value = "1+2+cos(90)";
-    }
+function onClickRec() {
+  if (operandoType == 2) { opHiddenIndex++; }
+  strDisplay += "rec(";
+  refreshDisplay();
+  operandoType = 3;
+  insertOpHidden("0");
+}
+function onClickpiumeno() {
+  strDisplay += "(-";
+  refreshDisplay();
 
-    //onClick sistema
+}
 
-    function onClickClearAll(){
-      strDisplay= "";
-      refreshDisplay();
-    }
-    function onClickClearOne(){
-      strDisplay = strDisplay.slice(0, -1); 
-      refreshDisplay();
+//onClick operazioni speciali
+
+function onClickCos() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "cos(";
+
+  operandoType = 3;
+  insertOpHidden("cos(");
+  refreshDisplay();
+}
+function onClickSin() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "sin(";
+
+  operandoType = 3;
+  insertOpHidden("sin(");
+  refreshDisplay();
+}
+function onClickTan() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "tan(";
+
+  operandoType = 3;
+  insertOpHidden("tan(");
+  refreshDisplay();
+}
+function onClickAcos() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "acos(";
+
+  operandoType = 3;
+  insertOpHidden("acos(");
+  refreshDisplay();
+}
+function onClickAsin() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "asin(";
+
+  operandoType = 3;
+  insertOpHidden("asin(");
+  refreshDisplay();
+}
+function onClickAtan() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "atan(";
+
+  operandoType = 3;
+  insertOpHidden("atan(");
+  refreshDisplay();
+}
+function onClickLog() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "log10(";
+
+  operandoType = 3;
+  insertOpHidden("log10(");
+  refreshDisplay();
+}
+function onClickLn() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  operandoType = 3;
+  insertOpHidden("ln(");
+  strDisplay += "ln(";
+  refreshDisplay();
+}
+function onClickfatt() { //transform in gmp_fact
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "fact(";
+
+  operandoType = 3;
+  insertOpHidden("fact(");
+  refreshDisplay();
+}
+function onClickRadX() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "radX(";
+
+  operandoType = 3;
+  insertOpHidden("radX(");
+  refreshDisplay();
+}
+function onCLickRadQuad() {//transform in sqrt
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "rad2(";
+
+  operandoType = 3;
+  insertOpHidden("rad2(");
+  refreshDisplay();
+}
+function onClickElevX() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "pow(";
+
+  operandoType = 3;
+  insertOpHidden("pow(");
+  refreshDisplay();
+}
+function onClickElevQuad() {
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "pow2(";
+
+  operandoType = 3;
+  insertOpHidden("pow2(");
+  refreshDisplay();
+}
+function onClickConvInRad() { //transform in deg2rad
+  if (operandoType != 1) { opHiddenIndex++; }
+  strDisplay += "conv(";
+
+  operandoType = 3;
+  insertOpHidden("conv(");
+  refreshDisplay();
+}
+function onClickVirg() {
+  strDisplay += ".";
+  refreshDisplay();
+}
+
+//onClick parentesi
+
+function onClickOpenPar() {
+  strDisplay += "(";
+  insertOpHidden("(");
+  refreshDisplay();
+}
+function onClickClosePar() {
+  strDisplay += ")";
+  insertOpHidden(")");
+  refreshDisplay();
+
+}
 
 
-    }
-    function onClickUguale(){
-      var elem = document.getElementById("ris");
-      elem.value = strDisplay;
+//onClick memoria
 
-    }
+function onClickGetMem() {
+  var div = document.getElementById("dom-target");
+  var myData = div.textContent;
+}
+function onClickSetMem() {
+  var elem = document.getElementById("ris");
+  elem.value = "1+2+cos(90)";
+}
+function onClickaddMem() {
+  var elem = document.getElementById("ris");
+  elem.value = "1+2+cos(90)";
+}
 
-    function formatString(){
+//onClick sistema
 
-    }
+function onClickClearAll() {
+  strDisplay = "";
+  opHidden.length = 0;
+  refreshDisplay();
+}
+function onClickClearOne() {
+  strDisplay = strDisplay.slice(0, -1);
+  refreshDisplay();
 
-    function checkString(){ }
-    
 
-    function checkOperazione(carattere){
-       var i=0;
+}
+function onClickUguale() {
+  var elem = document.getElementById("ris");
+  elem.value = strDisplay;
 
-       while(i<operazioni.length&&carattere!=operazioni[i]){
-         i++;
-       }
-       if(i>operazioni.length){
-         return false;
-       }else{
-         return true;
-       }
-    }
+}
 
-    function checkOperazioneSpeciale(carattere){
-      var i=0;
+function formatString() {
 
-       while(i<operazioni.length&&carattere!=operazioni[i]){
-         i++;
-       }
-       if(i>operazioni.length){
-         return false;
-       }else{
-         return true;
-       }
-    }
+}
 
-    function refreshDisplay(){
-      // if(checkString()){
-      document.getElementById('display').innerHTML = strDisplay;
-      // }else{
+function checkString() { }
 
-      // }
-    }
 
-    function risToStrDisplay(){
-      var ris= document.getElementById("display");
-      strDisplay= ris.textContent;
-    }
+function checkOperazione(carattere) {
+  var i = 0;
 
-    function disableButton(){
-      var elem = document.getElementById("esp");
-      elem.disabled = true;
-    }
-    function enableButton(){
-      var elem = document.getElementById("esp");
-      elem.disabled = false;
-    }
+  while (i < operazioni.length && carattere != operazioni[i]) {
+    i++;
+  }
+  if (i > operazioni.length) {
+    return false;
+  } else {
+    return true;
+  }
+}
 
-    function insertDollar(){
+function checkOperazioneSpeciale(carattere) {
+  var i = 0;
 
-    }
+  while (i < operazioni.length && carattere != operazioni[i]) {
+    i++;
+  }
+  if (i > operazioni.length) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function refreshDisplay() {
+  // if(checkString()){
+  document.getElementById('upperDisplay').innerHTML = strDisplay;
+  // }else{
+
+  // }
+  document.getElementById('lowerDisplay').innerHTML = opHidden.join();
+}
+
+function insertOpHidden(stringa) {
+  if (opHidden[opHiddenIndex] == 'undefined' || opHidden[opHiddenIndex] == null) {
+    opHidden[opHiddenIndex] = stringa;
+  }
+  else {
+    opHidden[opHiddenIndex] += stringa;
+  }
+}
+
+function risToStrDisplay() {
+  var ris = document.getElementById("upperDisplay");
+  strDisplay = ris.textContent;
+}
+
+function disableButton() {
+  var elem = document.getElementById("esp");
+  elem.disabled = true;
+}
+function enableButton() {
+  var elem = document.getElementById("esp");
+  elem.disabled = false;
+}
 
 
 

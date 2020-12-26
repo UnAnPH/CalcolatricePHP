@@ -1,86 +1,199 @@
-.piumeno { grid-area: piumeno;  }
-.coseno { grid-area: coseno; }
-.seno { grid-area: seno; }
-.tangente { grid-area: tangente;   }
-.arcocoseno { grid-area: arcocoseno; }
-.arcoseno { grid-area: arcoseno; }
-.arcotangente { grid-area: arcotangente; }
-.logaritmo { grid-area: logaritmo; }
-.logaritmoNaturale { grid-area: logaritmoNaturale; }
-.clearAll { grid-area: clearAll; }
-.clearOne { grid-area: clearOne; }
-.fattoriale { grid-area: fattoriale; }
-.radiceEnnesima { grid-area: radiceEnnesima; }
-.radicequadrata { grid-area: radiceQuadrata; }
-.elevementoEnnesimo { grid-area: elevamentoEnnesimo; }
-.elevementoQuadrato { grid-area: elevamentoQuadrato; }
-.reciproco { grid-area: reciproco; }
-.uno { grid-area: uno; }
-.due { grid-area: due; }
-.tre { grid-area: tre; }
-.quattro { grid-area: quattro; }
-.cinque { grid-area: cinque; }
-.sei { grid-area: sei; }
-.sette { grid-area: sette; }
-.otto { grid-area: otto; }
-.nove { grid-area: nove; }
-.zero { grid-area: zero; }
-.addizione { grid-area: addizione; }
-.sottrazione { grid-area: sottrazione; }
-.moltiplicazione { grid-area: moltiplicazione; }
-.divisione { grid-area: divisione; }
-.virgola { grid-area: virgola; }
-.apriPar {grid-area: apriPar;}
-.chiudiPar {grid-area: chiudiPar;}
-.convInRad {grid-area: convInRad; }
-.esp {grid-area: esp;}
-.uguale { grid-area: uguale; }
-.vuoto{grid-area: vuoto;}
-.getMem { grid-area: getMem; }
-.setMem { grid-area: setMem; }
-.addMem{grid-area: addMem;}
-#display{ grid-area: display;
-          border-style: solid;   
-          width: auto;    
-          height: 100px;     
+.piumeno {
+  grid-area: piumeno;
 }
 
-.button{
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    width:100%;
+.coseno {
+  grid-area: coseno;
 }
 
-.button:disabled{
+.seno {
+  grid-area: seno;
+}
+
+.tangente {
+  grid-area: tangente;
+}
+
+.arcocoseno {
+  grid-area: arcocoseno;
+}
+
+.arcoseno {
+  grid-area: arcoseno;
+}
+
+.arcotangente {
+  grid-area: arcotangente;
+}
+
+.logaritmo {
+  grid-area: logaritmo;
+}
+
+.logaritmoNaturale {
+  grid-area: logaritmoNaturale;
+}
+
+.clearAll {
+  grid-area: clearAll;
+}
+
+.clearOne {
+  grid-area: clearOne;
+}
+
+.fattoriale {
+  grid-area: fattoriale;
+}
+
+.radiceEnnesima {
+  grid-area: radiceEnnesima;
+}
+
+.radicequadrata {
+  grid-area: radiceQuadrata;
+}
+
+.elevementoEnnesimo {
+  grid-area: elevamentoEnnesimo;
+}
+
+.elevementoQuadrato {
+  grid-area: elevamentoQuadrato;
+}
+
+.reciproco {
+  grid-area: reciproco;
+}
+
+.uno {
+  grid-area: uno;
+}
+
+.due {
+  grid-area: due;
+}
+
+.tre {
+  grid-area: tre;
+}
+
+.quattro {
+  grid-area: quattro;
+}
+
+.cinque {
+  grid-area: cinque;
+}
+
+.sei {
+  grid-area: sei;
+}
+
+.sette {
+  grid-area: sette;
+}
+
+.otto {
+  grid-area: otto;
+}
+
+.nove {
+  grid-area: nove;
+}
+
+.zero {
+  grid-area: zero;
+}
+
+.addizione {
+  grid-area: addizione;
+}
+
+.sottrazione {
+  grid-area: sottrazione;
+}
+
+.moltiplicazione {
+  grid-area: moltiplicazione;
+}
+
+.divisione {
+  grid-area: divisione;
+}
+
+.virgola {
+  grid-area: virgola;
+}
+
+.apriPar {
+  grid-area: apriPar;
+}
+
+.chiudiPar {
+  grid-area: chiudiPar;
+}
+
+.convInRad {
+  grid-area: convInRad;
+}
+
+.esp {
+  grid-area: esp;
+}
+
+.uguale {
+  grid-area: uguale;
+}
+
+.vuoto {
+  grid-area: vuoto;
+}
+
+.getMem {
+  grid-area: getMem;
+}
+
+.setMem {
+  grid-area: setMem;
+}
+
+.addMem {
+  grid-area: addMem;
+}
+
+#display {
+  grid-area: display;
+  border-style: solid;
+  width: auto;
+  height: 100px;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:disabled {
   background-color: red;
 }
 
 .calcolatrice-container {
   display: grid;
-  grid-template-areas:
-    'display display display display display'
-    'esp convInRad apriPar chiudiPar piumeno'
-    'coseno seno tangente arcocoseno arcoseno'
-    'arcotangente logaritmo logaritmoNaturale clearAll clearOne'
-    'fattoriale getMem setMem addMem divisione'
-    'radiceEnnesima sette otto nove moltiplicazione'
-    'radiceQuadrata quattro cinque sei sottrazione'
-    'elevamentoEnnesimo uno due tre addizione'
-    'elevamentoQuadrato reciproco zero virgola uguale'
-    ;
-    grid-column-gap: 10px;
-    width: 30%;
+  grid-template-areas: 'display display display display display' 'esp convInRad apriPar chiudiPar piumeno' 'coseno seno tangente arcocoseno arcoseno' 'arcotangente logaritmo logaritmoNaturale clearAll clearOne' 'fattoriale getMem setMem addMem divisione' 'radiceEnnesima sette otto nove moltiplicazione' 'radiceQuadrata quattro cinque sei sottrazione' 'elevamentoEnnesimo uno due tre addizione' 'elevamentoQuadrato reciproco zero virgola uguale';
+  grid-column-gap: 10px;
+  width: 30%;
 }
 
-.calcolatrice-container > div {
+.calcolatrice-container>div {
   background-color: rgba(255, 255, 255, 0.8);
 }
-

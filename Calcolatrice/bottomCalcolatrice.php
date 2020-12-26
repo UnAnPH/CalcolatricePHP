@@ -39,15 +39,15 @@
                         <form action="index.php" method="POST">
                                 <input type="submit" name="getMem" value="M" class="button" onclick="onClickGetMem()">
                         </form>
-                 </div>
+                </div>
                 <div class="setMem">
-                        <form action="index.php" method="POST"> 
+                        <form action="index.php" method="POST">
                                 <input type="hidden" id="setMem" name="mem" value="" />
                                 <input type="submit" name="setMem" value="STO" class="button" onclick="onClickSetMem()">
                         </form>
                 </div>
                 <div class="addMem">
-                        <form action="index.php" method="POST"> 
+                        <form action="index.php" method="POST">
                                 <input type="hidden" id="addMem" name="addmem" value="" />
                                 <input type="submit" name="addMem" value="M+" class="button" onclick="onClickaddMem()">
                         </form>
@@ -58,6 +58,4 @@
                                 <input type="submit" name="uguale" value="=" class="button" onclick="onClickUguale()">
                         </form>
                 </div>
-        </div>
-        
-        
+                </div>
