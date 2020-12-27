@@ -1,16 +1,11 @@
 //variables Definition
 
-var operazioni = ['+', '-', '*', '/'];
+var operazioniValide = ['+', '-', '*', '/','cos','sin','tan','acos','asin','atan','log','ln','fact','radX','rad2','pow','pow2','conv','(',')'];
 
 var strDisplay = "";
 var opHidden = [];
 var opHiddenIndex = -1;
 
-var lastOperation = "";
-var lastSpecialOperation = "";
-var lastNumber = "";
-
-var boolVirg = false;
 var operandoType = 0;
 
 //onClick listeners
@@ -129,17 +124,20 @@ function onClickDiv() {
 function onClickRec() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "rec(";
-  refreshDisplay();
   operandoType = 3;
-  insertOpHidden("0");
+  insertOpHidden("rec");
+  refreshDisplay();
 }
 function onClickpiumeno() {
   strDisplay += "(-";
   refreshDisplay();
 }
 function onClickVirg() {
+  if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += ".";
   insertOpHidden(".");
+  if(operandoType==2){opHiddenIndex--;} 
+  
   refreshDisplay();
 }
 //#endregion
@@ -190,9 +188,9 @@ function onClickAtan() {
 }
 function onClickLog() {
   if (operandoType != 1) { opHiddenIndex++; }
-  strDisplay += "log10(";
+  strDisplay += "log(";
   operandoType = 3;
-  insertOpSpec("log10");
+  insertOpSpec("log");
   refreshDisplay();
 }
 function onClickLn() {
@@ -289,14 +287,21 @@ function onClickClearAll() {
 }
 function onClickClearOne() {
   strDisplay = strDisplay.slice(0, -1);
+  opHidden[opHiddenIndex]= opHidden[opHiddenIndex].slice(0, -1);
+  if(opHidden[opHiddenIndex]==""){ opHiddenIndex--; }
+  if(opHiddenIndex==-1){ opHiddenIndex=0};
   refreshDisplay();
 }
 //#endregion
 
 //onClick sistema
 function onClickUguale() {
+  if(checkString()){
   var elem = document.getElementById("ris");
-  elem.value = strDisplay;
+  elem.value = opHidden.join();
+   }else{
+    document.getElementById('lowerDisplay').innerHTML = "error";
+   }
 }
 
 function risToStrDisplay() {
@@ -305,11 +310,7 @@ function risToStrDisplay() {
 }
 
 function refreshDisplay() {
-  // if(checkString()){
   document.getElementById('upperDisplay').innerHTML = strDisplay;
-  // }else{
-
-  // }
   document.getElementById('lowerDisplay').innerHTML = opHidden.join();
 }
 
@@ -330,34 +331,28 @@ function insertOpSpec(stringa){
 
 //checking functions
 //#region 
-function checkString() { }
-
-
-function checkOperazione(carattere) {
-  var i = 0;
-
-  while (i < operazioni.length && carattere != operazioni[i]) {
+function checkString() { 
+  var i=1;
+  var error=false;
+  while(i<opHidden.length && !error){
+    if(!(isNumeric(opHidden[i])||operazioniValide.indexOf(opHidden[i])>-1||opHidden[i]=='')){
+      error=true;
+    }
     i++;
   }
-  if (i > operazioni.length) {
+  if(error){
     return false;
-  } else {
+  }  else{
     return true;
   }
 }
 
-function checkOperazioneSpeciale(carattere) {
-  var i = 0;
-
-  while (i < operazioni.length && carattere != operazioni[i]) {
-    i++;
-  }
-  if (i > operazioni.length) {
-    return false;
-  } else {
-    return true;
-  }
+function isNumeric(str) {
+  if (typeof str != "string") return false // we only process strings!  
+  return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+         !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
+
 //#endregion
 
 //Button enabler

@@ -8,15 +8,17 @@
 
 <body>
     <header></header>
-
+    
     <section>
 
         <?php
+        //echo htmlspecialchars(evalString($_POST["ris"]));
+        //echo "\n".htmlspecialchars($_POST["ris"]) 
         if ($_POST) { ?>
             <div class="calcolatrice-container">
                 <?php if (isset($_POST['ris'])) { ?>
                     <div id="display">
-                        <div id="upperDisplay"><?php echo htmlspecialchars(evalString($_POST["ris"])); ?></div>
+                        <div id="upperDisplay"><?php evalString($_POST["ris"]);?> </div>
                         <div id="lowerDisplay"></div>
                     </div>
                 <?php echo risToStrDisplay();
