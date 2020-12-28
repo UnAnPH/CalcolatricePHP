@@ -1,6 +1,6 @@
 //variables Definition
 
-var operazioniValide = ['+', '-', '*', '/','cos','sin','tan','acos','asin','atan','log','ln','fact','radX','rad2','pow','pow2','conv','(',')'];
+var operazioniValide = ['+', '-', '*', '/','cos','sin','tan','acos','asin','atan','log','ln','fact','radx','rad2','pow','pow2','conv','(',')',','];
 
 var strDisplay = "";
 var opHidden = [];
@@ -148,7 +148,14 @@ function onClickVirg() {
   strDisplay += ".";
   insertOpHidden(".");
   if(operandoType==2){opHiddenIndex--;} 
-  
+  refreshDisplay();
+}
+function onClickEsp(){
+  opHiddenIndex++;
+  strDisplay += ",";
+  insertOpHidden(",");
+  operandoType=3;
+  disableEspButton();
   refreshDisplay();
 }
 
@@ -224,6 +231,7 @@ function onClickRadX() {
   strDisplay += "radX(";
   operandoType = 3;
   insertOpSpec("radx");
+  enableEspButton();
   refreshDisplay();
 }
 function onCLickRadQuad() {//transform in sqrt
@@ -238,6 +246,7 @@ function onClickElevX() {
   strDisplay += "pow(";
   operandoType = 3;
   insertOpSpec("pow");
+  enableEspButton();
   refreshDisplay();
 }
 function onClickElevQuad() {
@@ -312,11 +321,10 @@ function onClickClearOne() {
 }
 //#endregion
 
-
 function onClickUguale() {
   if(checkString()){
     var elem = document.getElementById("ris");
-    elem.value = opHidden.join();
+    elem.value = opHidden.join("_");
    }else{
     document.getElementById('lowerDisplay').innerHTML = "error1";
    }
@@ -338,7 +346,7 @@ function risToStrDisplay() {
 
 function refreshDisplay() {
   document.getElementById('upperDisplay').innerHTML = strDisplay;
-  document.getElementById('lowerDisplay').innerHTML = opHidden.join();
+  document.getElementById('lowerDisplay').innerHTML = opHidden.join("_");
   if(!checkString()){
     document.getElementById('errorDisplay').innerHTML = "error";
   }else{
@@ -375,9 +383,9 @@ function checkString() {
     if(!(isNumeric(opHidden[i])||operazioniValide.indexOf(opHidden[i])>-1||opHidden[i]=="")){
       error=true;
     }
-    // alert("1"+isNumeric(opHidden[i]));
-    // alert("2:"+(operazioniValide.indexOf(opHidden[i])>-1));
-    // alert("3:"+opHidden[i]);
+     //alert("1"+isNumeric(opHidden[i]));
+     //alert("2:"+(operazioniValide.indexOf(opHidden[i])>-1));
+     //alert("3:"+opHidden[i]);
     i++;
   }
   // alert(openParIndex);
@@ -401,11 +409,11 @@ function isNumeric(str) {
 
 //Button enabler
 //#region 
-function disableButton() {
+function disableEspButton() {
   var elem = document.getElementById("esp");
   elem.disabled = true;
 }
-function enableButton() {
+function enableEspButton() {
   var elem = document.getElementById("esp");
   elem.disabled = false;
 }

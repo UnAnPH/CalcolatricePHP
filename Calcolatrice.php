@@ -7,7 +7,7 @@
     }
 
     function evalString(String $stringToCalc) {
-        $array= explode(",",$stringToCalc);
+        $array= explode("_",$stringToCalc);
         for($i=0;$i<count($array);$i++){
             $array[$i]=changeString($array[$i]);
         }
@@ -32,18 +32,19 @@
         return $ris;
     }
     
-    function radX($numero,$esp){
-        powX($numero,$esp);
+    function radx($numero,$esp=1){
+        $ciao=eval("return " . $numero . ";" );
+        return powX($numero,1/$esp);
     }
     
-    function powX($numero,$esp){
+    function powX($numero,$esp=1){
         $ciao=eval("return " . $numero . ";" );
         return $ciao ** $esp;
     }
     
     function rad2($numero){
-            $ciao=eval("return " . $numero . ";" );
-            return sqrt($ciao);
+            $ris=eval("return " . $numero . ";" );
+            return sqrt($ris);
         }
 
         function pow2($numero){
