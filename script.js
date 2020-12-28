@@ -8,6 +8,11 @@ var opHiddenIndex = -1;
 
 var operandoType = 0;
 
+var openParIndex=0;
+var closeParIndex=0;
+
+var parBool=false;
+
 //onClick listeners
 
 //onClick Numeri
@@ -90,7 +95,7 @@ function onCLickZero() {
 //onClick operazioni
 //#region
 function onClickadd() {
-  if (operandoType == 1) { opHiddenIndex++; }
+  if (operandoType == 1 ||operandoType==4) { opHiddenIndex++; }
   operandoType = 2;
   strDisplay += "+";
   insertOpHidden("+");
@@ -129,7 +134,13 @@ function onClickRec() {
   refreshDisplay();
 }
 function onClickpiumeno() {
+  if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "(-";
+  insertOpHidden("(");
+  opHiddenIndex++;
+  insertOpHidden("-");
+  operandoType=2;
+  openParIndex++;
   refreshDisplay();
 }
 function onClickVirg() {
@@ -140,6 +151,7 @@ function onClickVirg() {
   
   refreshDisplay();
 }
+
 //#endregion
 
 //onClick operazioni speciali
@@ -194,7 +206,7 @@ function onClickLog() {
   refreshDisplay();
 }
 function onClickLn() {
-  if (operandoType != 1) { opHiddenIndex++; }
+  if (operandoType != 1 || operandoType==4 ) { opHiddenIndex++; }
   operandoType = 3;
   insertOpSpec("ln");
   strDisplay += "ln(";
@@ -248,15 +260,17 @@ function onClickConvInRad() { //transform in deg2rad
 //onClick parentesi
 //#region 
 function onClickOpenPar() {
-  if (operandoType != 1) { opHiddenIndex++; }
+  if (operandoType != 1 || strDisplay.charAt(strDisplay.length-1)=="(") { opHiddenIndex++; }
   strDisplay += "(";
   insertOpHidden("(");
+  openParIndex++;
   refreshDisplay();
 }
 function onClickClosePar() {
-  if (operandoType == 1) { opHiddenIndex++; }
+  if (operandoType == 1|| strDisplay.charAt(strDisplay.length-1)==")") { opHiddenIndex++; }
   strDisplay += ")";
   insertOpHidden(")");
+  closeParIndex++;
   refreshDisplay();
 }
 //#endregion
@@ -283,37 +297,58 @@ function onClickClearAll() {
   strDisplay = "";
   opHidden = [];
   opHiddenIndex=0;
+  operandoType=0;
+  openParIndex=0;
+  closeParIndex=0;
   refreshDisplay();
 }
 function onClickClearOne() {
+  if(strDisplay.charAt(strDisplay.length-1)=="("){openParIndex--;}else if(strDisplay.charAt(strDisplay.length-1)==")"){closeParIndex--;}else{}
   strDisplay = strDisplay.slice(0, -1);
   opHidden[opHiddenIndex]= opHidden[opHiddenIndex].slice(0, -1);
   if(opHidden[opHiddenIndex]==""){ opHiddenIndex--; }
-  if(opHiddenIndex==-1){ opHiddenIndex=0};
+  if(opHiddenIndex==-1){ opHiddenIndex=0}
   refreshDisplay();
 }
 //#endregion
 
-//onClick sistema
+
 function onClickUguale() {
   if(checkString()){
-  var elem = document.getElementById("ris");
-  elem.value = opHidden.join();
+    var elem = document.getElementById("ris");
+    elem.value = opHidden.join();
    }else{
-    document.getElementById('lowerDisplay').innerHTML = "error";
+    document.getElementById('lowerDisplay').innerHTML = "error1";
    }
 }
 
+//Display functions
+//#region 
 function risToStrDisplay() {
   var ris = document.getElementById("upperDisplay");
   strDisplay = ris.textContent;
+  opHiddenIndex=0;
+  opHidden[opHiddenIndex]= ris.textContent.toString();
+  operandoType=1;
+  openParIndex=0;
+  closeParIndex=0;
+  refreshDisplay();
 }
+
 
 function refreshDisplay() {
   document.getElementById('upperDisplay').innerHTML = strDisplay;
   document.getElementById('lowerDisplay').innerHTML = opHidden.join();
+  if(!checkString()){
+    document.getElementById('errorDisplay').innerHTML = "error";
+  }else{
+    document.getElementById('errorDisplay').innerHTML = "";
+  }
 }
+//#endregion
 
+//insert functions
+//#region 
 function insertOpHidden(stringa) {
   if (opHidden[opHiddenIndex] == 'undefined' || opHidden[opHiddenIndex] == null) {
     opHidden[opHiddenIndex] = stringa;
@@ -326,8 +361,10 @@ function insertOpHidden(stringa) {
 function insertOpSpec(stringa){
   insertOpHidden(stringa);
   opHiddenIndex++;
+  openParIndex++;
   insertOpHidden("(");
 }
+//#endregion
 
 //checking functions
 //#region 
@@ -335,10 +372,18 @@ function checkString() {
   var i=1;
   var error=false;
   while(i<opHidden.length && !error){
-    if(!(isNumeric(opHidden[i])||operazioniValide.indexOf(opHidden[i])>-1||opHidden[i]=='')){
+    if(!(isNumeric(opHidden[i])||operazioniValide.indexOf(opHidden[i])>-1||opHidden[i]=="")){
       error=true;
     }
+    // alert("1"+isNumeric(opHidden[i]));
+    // alert("2:"+(operazioniValide.indexOf(opHidden[i])>-1));
+    // alert("3:"+opHidden[i]);
     i++;
+  }
+  // alert(openParIndex);
+  // alert(closeParIndex);
+  if(openParIndex!=closeParIndex){
+    error=true;
   }
   if(error){
     return false;
@@ -352,7 +397,6 @@ function isNumeric(str) {
   return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
          !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
-
 //#endregion
 
 //Button enabler
