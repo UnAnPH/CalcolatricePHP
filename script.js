@@ -291,12 +291,20 @@ function onClickGetMem() {
   var myData = div.textContent;
 }
 function onClickSetMem() {
-  var elem = document.getElementById("ris");
-  elem.value = "1+2+cos(90)";
+  if (checkString()) {
+    var elem = document.getElementById("setMem");
+    elem.value = opHidden.join("_");
+  } else {
+    document.getElementById('errorDisplay').innerHTML = "error1";
+  }
 }
 function onClickaddMem() {
-  var elem = document.getElementById("ris");
-  elem.value = "1+2+cos(90)";
+  if (checkString()) {
+    var elem = document.getElementById("addMem");
+    elem.value = opHidden.join("_");
+  } else {
+    document.getElementById('errorDisplay').innerHTML = "error1";
+  }
 }
 //#endregion
 
@@ -326,7 +334,7 @@ function onClickUguale() {
     var elem = document.getElementById("ris");
     elem.value = opHidden.join("_");
   } else {
-    document.getElementById('lowerDisplay').innerHTML = "error1";
+    document.getElementById('errorDisplay').innerHTML = "error1";
   }
 }
 
