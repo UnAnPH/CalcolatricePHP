@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 
 <head>
@@ -12,7 +15,7 @@
     <section>
 
         <?php
-        $calcolatrice = new calcolatrice();
+        $calcolatrice = new calcolatrice(); 
         //echo htmlspecialchars(evalString($_POST["ris"]));
         //echo "\n".htmlspecialchars($_POST["ris"]) 
         if ($_POST) { ?>

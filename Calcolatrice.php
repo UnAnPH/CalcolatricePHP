@@ -1,5 +1,7 @@
 <?php
 
+$_SESSION["mem"]; 
+
 class calcolatrice
 {
 
@@ -26,16 +28,14 @@ class calcolatrice
     public function setMem(String $stringToCalc)
     {
         $this->memoria = $this->evalString($stringToCalc);
-        echo "setmem(" . $this->memoria . ")";
+        $_SESSION["mem"]= $this->memoria;
         return $stringToCalc;
     }
 
     public function addMem(String $stringToCalc)
     {
-        $this->memoria;
-        echo "prima(" . $this->memoria . ")";
-        $memoria = $this->evalString($stringToCalc);
-        echo "dopo(" . $this->memoria . ")";
+        $_SESSION["mem"] += $this->evalString($stringToCalc);
+        echo "dopo(" . $_SESSION["mem"] . ")";
         return $stringToCalc;
     }
 
