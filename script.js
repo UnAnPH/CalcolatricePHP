@@ -13,6 +13,7 @@ var closeParIndex = 0;
 
 var parBool = false;
 
+
 //onClick listeners
 
 //onClick Numeri
@@ -360,6 +361,12 @@ function refreshDisplay() {
   } else {
     document.getElementById('errorDisplay').innerHTML = "";
   }
+}
+
+function memToHiddenDisplay(){
+  var mem = document.getElementById("HiddenDisplay");
+  
+
 }
 //#endregion
 

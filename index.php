@@ -29,7 +29,8 @@
                         <div id="upperDisplay"><?php echo htmlspecialchars($calcolatrice->setMem($_POST["setMem"])); ?></div>
                         <div id="lowerDisplay"></div>
                         <div id="errorDisplay"></div>
-                    </div> <?php echo $calcolatrice->risToStrDisplay();
+                        <div id="HiddenDisplay" style="display: none;"><?php echo htmlspecialchars($calcolatrice->getMem()); ?></div>
+                    </div> <?php echo $calcolatrice->memToHiddenDisplay();
                         } elseif (isset($_POST['addMem'])) { ?>
                     <div id="display">
                         <div id="upperDisplay"><?php echo htmlspecialchars($calcolatrice->addMem($_POST["addMem"])); ?></div>

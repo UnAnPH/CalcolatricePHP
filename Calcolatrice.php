@@ -12,6 +12,12 @@ class calcolatrice
         </script>';
     }
 
+    public function memToHiddenDisplay(){
+        return '<script type="text/javascript">
+        memToHiddenDisplay()
+        </script>';
+    }
+
     public function evalString(String $stringToCalc)
     {
         $array = explode("_", $stringToCalc);
@@ -30,12 +36,15 @@ class calcolatrice
         return $stringToCalc;
     }
 
+    public function getMem(){
+        return $this->memoria;
+    }
+
     public function addMem(String $stringToCalc)
     {
-        $this->memoria;
-        echo "prima(" . $this->memoria . ")";
-        $memoria = $this->evalString($stringToCalc);
-        echo "dopo(" . $this->memoria . ")";
+        // echo "prima(" . $this->memoria . ")";
+        $this->memoria += $this->evalString($stringToCalc);
+        // echo "dopo(" . $this->memoria . ")";
         return $stringToCalc;
     }
 
