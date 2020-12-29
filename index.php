@@ -20,24 +20,26 @@
                     <div id="display">
                         <div id="upperDisplay"><?php echo htmlspecialchars(evalString($_POST["ris"])); ?></div>
                         <div id="lowerDisplay"></div>
-                        <div id="errorDisplay"><?php echo htmlspecialchars(risToStrDisplay()) ?></div>
-                        <div id="hiddenDisplay"><?php echo htmlspecialchars(risToStrDisplay()) ?></div>
+                        <div id="errorDisplay"></div>
                     </div>
                 <?php echo risToStrDisplay();
                 } elseif (isset($_POST['setMem'])) { ?>
                     <div id="display">
                         <div id="upperDisplay"></div>
                         <div id="lowerDisplay"></div>
+                        <div id="errorDisplay"></div>
                     </div> <?php
                         } elseif (isset($_POST['addMem'])) { ?>
                     <div id="display">
                         <div id="upperDisplay"></div>
                         <div id="lowerDisplay"></div>
+                        <div id="errorDisplay"></div>
                     </div><?php
                         } elseif (isset($_POST['getMem'])) { ?>
                     <div id="display">
                         <div id="upperDisplay"></div>
                         <div id="lowerDisplay"></div>
+                        <div id="errorDisplay"></div>
                     </div>
                     <div id="dom-target" style="display: none;">
                         <?php echo htmlspecialchars($output); ?></div> <?php
@@ -45,9 +47,15 @@
                                                                     include 'Calcolatrice/bottomCalcolatrice.php';
                                                                 } else {  ?>
                 <div class="calcolatrice-container">
-                    <div id="display"></div>
-                <?php include 'Calcolatrice/bottomCalcolatrice.php';
+                <div id="display">
+                    <div id="upperDisplay"></div>
+                    <div id="lowerDisplay"></div>
+                    <div id="errorDisplay"></div>
+                    </div>
+                <?php 
+                include 'Calcolatrice/bottomCalcolatrice.php';
                                                                 }
+                                                                
                 ?>
 
     </section>

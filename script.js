@@ -151,7 +151,7 @@ function onClickVirg() {
   refreshDisplay();
 }
 function onClickEsp() {
-  opHiddenIndex++;
+  if (operandoType == 1) { opHiddenIndex++; }
   strDisplay += ",";
   insertOpHidden(",");
   operandoType = 3;

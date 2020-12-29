@@ -35,16 +35,16 @@ function fact($num)
     return $ris;
 }
 
-function radx($numero, $esp = 1)
+function radx($numero = "0", $esp = "1")
 {
     $ciao = eval("return " . $numero . ";");
-    return powX($numero, 1 / $esp);
+    return powX((string)$ciao, 1 / $esp);
 }
 
-function powX($numero, $esp = 1)
+function powX($numero = "0", $esp = "1")
 {
     $ciao = eval("return " . $numero . ";");
-    return $ciao ** $esp;
+    return $ciao ** (float)$esp;
 }
 
 function rad2($numero)
@@ -70,6 +70,10 @@ function changeString($string)
             break;
         case "conv":
             return 'deg2rad';
+            break;
+        case "pow":
+            return 'powX';
+            break;
         default:
             return $string;
             break;
