@@ -8,7 +8,7 @@
 
 <body>
     <header></header>
-    
+
     <section>
 
         <?php
@@ -18,9 +18,10 @@
             <div class="calcolatrice-container">
                 <?php if (isset($_POST['ris'])) { ?>
                     <div id="display">
-                        <div id="upperDisplay"><?php echo htmlspecialchars(evalString($_POST["ris"]));?></div>
+                        <div id="upperDisplay"><?php echo htmlspecialchars(evalString($_POST["ris"])); ?></div>
                         <div id="lowerDisplay"></div>
-                        <div id="errorDisplay"><?php echo htmlspecialchars(risToStrDisplay())?></div>
+                        <div id="errorDisplay"><?php echo htmlspecialchars(risToStrDisplay()) ?></div>
+                        <div id="hiddenDisplay"><?php echo htmlspecialchars(risToStrDisplay()) ?></div>
                     </div>
                 <?php echo risToStrDisplay();
                 } elseif (isset($_POST['setMem'])) { ?>

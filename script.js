@@ -1,6 +1,6 @@
 //variables Definition
 
-var operazioniValide = ['+', '-', '*', '/','cos','sin','tan','acos','asin','atan','log','ln','fact','radx','rad2','pow','pow2','conv','(',')',','];
+var operazioniValide = ['+', '-', '*', '/', 'cos', 'sin', 'tan', 'acos', 'asin', 'atan', 'log', 'ln', 'fact', 'radx', 'rad2', 'pow', 'pow2', 'conv', '(', ')', ','];
 
 var strDisplay = "";
 var opHidden = [];
@@ -8,10 +8,10 @@ var opHiddenIndex = -1;
 
 var operandoType = 0;
 
-var openParIndex=0;
-var closeParIndex=0;
+var openParIndex = 0;
+var closeParIndex = 0;
 
-var parBool=false;
+var parBool = false;
 
 //onClick listeners
 
@@ -95,7 +95,7 @@ function onCLickZero() {
 //onClick operazioni
 //#region
 function onClickadd() {
-  if (operandoType == 1 ||operandoType==4) { opHiddenIndex++; }
+  if (operandoType == 1 || operandoType == 4) { opHiddenIndex++; }
   operandoType = 2;
   strDisplay += "+";
   insertOpHidden("+");
@@ -139,7 +139,7 @@ function onClickpiumeno() {
   insertOpHidden("(");
   opHiddenIndex++;
   insertOpHidden("-");
-  operandoType=2;
+  operandoType = 2;
   openParIndex++;
   refreshDisplay();
 }
@@ -147,14 +147,14 @@ function onClickVirg() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += ".";
   insertOpHidden(".");
-  if(operandoType==2){opHiddenIndex--;} 
+  if (operandoType == 2) { opHiddenIndex--; }
   refreshDisplay();
 }
-function onClickEsp(){
+function onClickEsp() {
   opHiddenIndex++;
   strDisplay += ",";
   insertOpHidden(",");
-  operandoType=3;
+  operandoType = 3;
   disableEspButton();
   refreshDisplay();
 }
@@ -213,7 +213,7 @@ function onClickLog() {
   refreshDisplay();
 }
 function onClickLn() {
-  if (operandoType != 1 || operandoType==4 ) { opHiddenIndex++; }
+  if (operandoType != 1 || operandoType == 4) { opHiddenIndex++; }
   operandoType = 3;
   insertOpSpec("ln");
   strDisplay += "ln(";
@@ -269,14 +269,14 @@ function onClickConvInRad() { //transform in deg2rad
 //onClick parentesi
 //#region 
 function onClickOpenPar() {
-  if (operandoType != 1 || strDisplay.charAt(strDisplay.length-1)=="(") { opHiddenIndex++; }
+  if (operandoType != 1 || strDisplay.charAt(strDisplay.length - 1) == "(") { opHiddenIndex++; }
   strDisplay += "(";
   insertOpHidden("(");
   openParIndex++;
   refreshDisplay();
 }
 function onClickClosePar() {
-  if (operandoType == 1|| strDisplay.charAt(strDisplay.length-1)==")") { opHiddenIndex++; }
+  if (operandoType == 1 || strDisplay.charAt(strDisplay.length - 1) == ")") { opHiddenIndex++; }
   strDisplay += ")";
   insertOpHidden(")");
   closeParIndex++;
@@ -305,29 +305,29 @@ function onClickaddMem() {
 function onClickClearAll() {
   strDisplay = "";
   opHidden = [];
-  opHiddenIndex=0;
-  operandoType=0;
-  openParIndex=0;
-  closeParIndex=0;
+  opHiddenIndex = 0;
+  operandoType = 0;
+  openParIndex = 0;
+  closeParIndex = 0;
   refreshDisplay();
 }
 function onClickClearOne() {
-  if(strDisplay.charAt(strDisplay.length-1)=="("){openParIndex--;}else if(strDisplay.charAt(strDisplay.length-1)==")"){closeParIndex--;}else{}
+  if (strDisplay.charAt(strDisplay.length - 1) == "(") { openParIndex--; } else if (strDisplay.charAt(strDisplay.length - 1) == ")") { closeParIndex--; } else { }
   strDisplay = strDisplay.slice(0, -1);
-  opHidden[opHiddenIndex]= opHidden[opHiddenIndex].slice(0, -1);
-  if(opHidden[opHiddenIndex]==""){ opHiddenIndex--; }
-  if(opHiddenIndex==-1){ opHiddenIndex=0}
+  opHidden[opHiddenIndex] = opHidden[opHiddenIndex].slice(0, -1);
+  if (opHidden[opHiddenIndex] == "") { opHiddenIndex--; }
+  if (opHiddenIndex == -1) { opHiddenIndex = 0 }
   refreshDisplay();
 }
 //#endregion
 
 function onClickUguale() {
-  if(checkString()){
+  if (checkString()) {
     var elem = document.getElementById("ris");
     elem.value = opHidden.join("_");
-   }else{
+  } else {
     document.getElementById('lowerDisplay').innerHTML = "error1";
-   }
+  }
 }
 
 //Display functions
@@ -335,11 +335,11 @@ function onClickUguale() {
 function risToStrDisplay() {
   var ris = document.getElementById("upperDisplay");
   strDisplay = ris.textContent;
-  opHiddenIndex=0;
-  opHidden[opHiddenIndex]= ris.textContent.toString();
-  operandoType=1;
-  openParIndex=0;
-  closeParIndex=0;
+  opHiddenIndex = 0;
+  opHidden[opHiddenIndex] = ris.textContent.toString();
+  operandoType = 1;
+  openParIndex = 0;
+  closeParIndex = 0;
   refreshDisplay();
 }
 
@@ -347,9 +347,9 @@ function risToStrDisplay() {
 function refreshDisplay() {
   document.getElementById('upperDisplay').innerHTML = strDisplay;
   document.getElementById('lowerDisplay').innerHTML = opHidden.join("_");
-  if(!checkString()){
+  if (!checkString()) {
     document.getElementById('errorDisplay').innerHTML = "error";
-  }else{
+  } else {
     document.getElementById('errorDisplay').innerHTML = "";
   }
 }
@@ -366,7 +366,7 @@ function insertOpHidden(stringa) {
   }
 }
 
-function insertOpSpec(stringa){
+function insertOpSpec(stringa) {
   insertOpHidden(stringa);
   opHiddenIndex++;
   openParIndex++;
@@ -376,26 +376,26 @@ function insertOpSpec(stringa){
 
 //checking functions
 //#region 
-function checkString() { 
-  var i=1;
-  var error=false;
-  while(i<opHidden.length && !error){
-    if(!(isNumeric(opHidden[i])||operazioniValide.indexOf(opHidden[i])>-1||opHidden[i]=="")){
-      error=true;
+function checkString() {
+  var i = 1;
+  var error = false;
+  while (i < opHidden.length && !error) {
+    if (!(isNumeric(opHidden[i]) || operazioniValide.indexOf(opHidden[i]) > -1 || opHidden[i] == "")) {
+      error = true;
     }
-     //alert("1"+isNumeric(opHidden[i]));
-     //alert("2:"+(operazioniValide.indexOf(opHidden[i])>-1));
-     //alert("3:"+opHidden[i]);
+    //alert("1"+isNumeric(opHidden[i]));
+    //alert("2:"+(operazioniValide.indexOf(opHidden[i])>-1));
+    //alert("3:"+opHidden[i]);
     i++;
   }
   // alert(openParIndex);
   // alert(closeParIndex);
-  if(openParIndex!=closeParIndex){
-    error=true;
+  if (openParIndex != closeParIndex) {
+    error = true;
   }
-  if(error){
+  if (error) {
     return false;
-  }  else{
+  } else {
     return true;
   }
 }
@@ -403,7 +403,7 @@ function checkString() {
 function isNumeric(str) {
   if (typeof str != "string") return false // we only process strings!  
   return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-         !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+    !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
 //#endregion
 
