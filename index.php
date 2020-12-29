@@ -15,7 +15,7 @@ session_start();
     <section>
 
         <?php
-        $calcolatrice = new calcolatrice(); 
+        $calcolatrice = new calcolatrice();
         //echo htmlspecialchars(evalString($_POST["ris"]));
         //echo "\n".htmlspecialchars($_POST["ris"]) 
         if ($_POST) { ?>
@@ -46,21 +46,21 @@ session_start();
                         <div id="errorDisplay"></div>
                     </div>
                     <div id="dom-target" style="display: none;">
-                        <?php echo htmlspecialchars($output); ?></div> <?php
-                        echo $calcolatrice->risToStrDisplay();
-                                                                    }
-                                                                    include 'Calcolatrice/bottomCalcolatrice.php';
-                                                                } else {  ?>
+                        <?php echo htmlspecialchars($calcolatrice->getMem()); ?></div>
+                <?php echo $calcolatrice->ciao();
+                        }
+                        include 'Calcolatrice/bottomCalcolatrice.php';
+                    } else {  ?>
                 <div class="calcolatrice-container">
-                <div id="display">
-                    <div id="upperDisplay"></div>
-                    <div id="lowerDisplay"></div>
-                    <div id="errorDisplay"></div>
+                    <div id="display">
+                        <div id="upperDisplay"></div>
+                        <div id="lowerDisplay"></div>
+                        <div id="errorDisplay"></div>
                     </div>
-                <?php 
-                include 'Calcolatrice/bottomCalcolatrice.php';
-                                                                }
-                                                                
+                <?php
+                        include 'Calcolatrice/bottomCalcolatrice.php';
+                    }
+
                 ?>
 
     </section>

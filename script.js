@@ -285,10 +285,27 @@ function onClickClosePar() {
 //#endregion
 
 //onClick memoria
+var random=1;
 //#region
 function onClickGetMem() {
+  var elem = document.getElementById("getMem");
+  elem.value = "getMem";
+
+  localStorage.setItem("strDisplayStorage", strDisplay);
+  localStorage.setItem("opHiddenString", opHidden.join("_"));
+  localStorage.setItem("opHiddenStringIndex", opHiddenIndex.toString());
+}
+
+function getMem(){
   var div = document.getElementById("dom-target");
-  var myData = div.textContent;
+  strDisplay= localStorage.getItem("strDisplayStorage");
+  strDisplay += div.textContent;
+  // opHidden[opHiddenIndex] = parseFloat(div.textContent).toString();
+  opHidden= localStorage.getItem("opHiddenString").split("_");
+  opHidden[parseInt(localStorage.getItem("opHiddenStringIndex"))+1]= div.textContent;
+  opHiddenIndex= localStorage.getItem("OpHiddenStringIndex");
+  operandoType = 1;
+  refreshDisplay();
 }
 function onClickSetMem() {
   if (checkString()) {

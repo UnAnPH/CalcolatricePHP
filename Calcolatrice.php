@@ -14,6 +14,12 @@ class calcolatrice
         </script>';
     }
 
+    public function ciao(){
+        return '<script type="text/javascript">
+        getMem();
+        </script>';
+    }
+
     public function evalString(String $stringToCalc)
     {
         $array = explode("_", $stringToCalc);
@@ -35,8 +41,11 @@ class calcolatrice
     public function addMem(String $stringToCalc)
     {
         $_SESSION["mem"] += $this->evalString($stringToCalc);
-        echo "dopo(" . $_SESSION["mem"] . ")";
         return $stringToCalc;
+    }
+
+    public function getMem(){
+        return $_SESSION["mem"]; 
     }
 
     //posso fare funzioni che eval va a chiamare
