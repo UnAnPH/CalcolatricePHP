@@ -1,5 +1,5 @@
              <div class="vuoto"></div>
-        <!--  #divPulsanti   -->
+             <!--  #divPulsanti   -->
              <div class="coseno"><button class="button" onclick="onClickCos()">cos</button></div>
              <div class="seno"><button class="button" onclick="onClickSin()">sin</button></div>
              <div class="tangente"><button class="button" onclick="onClickTan()">tan</button></div>
@@ -36,12 +36,13 @@
              <div class="chiudiPar"><button class="button" onclick="onClickClosePar()">)</button></div>
              <div class="convInRad"><button class="button" onclick="onClickConvInRad()">°>rad</button></div>
              <div class="esp"><button class="button" id="esp" onclick="onClickEsp()" disabled>esp</button></div>
-        <!--  #divPulsanti   -->
+             <!--  #divPulsanti   -->
 
-        <!--  #memPulsanti   -->
+             <!--  #memPulsanti   -->
              <div class="getMem">
                      <form action="index.php" method="POST">
-                             <input type="submit" name="getMem" value="M" class="button" onclick="onClickGetMem()">
+                             <input type="hidden" id="getMem" name="getMem" value="" />
+                             <input type="submit" name="Mem" value="M" class="button" onclick="onClickGetMem()">
                      </form>
              </div>
              <div class="setMem">
@@ -56,7 +57,7 @@
                              <input type="submit" name="M+" value="M+" class="button" onclick="onClickaddMem()">
                      </form>
              </div>
-        <!--  #memPulsanti   -->
+             <!--  #memPulsanti   -->
              <div class="uguale">
                      <form action="index.php" method="POST">
                              <input type="hidden" id="ris" name="ris" value="" />

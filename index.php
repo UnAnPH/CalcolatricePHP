@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 
 <head>
@@ -30,7 +33,7 @@
                         <div id="lowerDisplay"></div>
                         <div id="errorDisplay"></div>
                         <div id="HiddenDisplay" style="display: none;"><?php echo htmlspecialchars($calcolatrice->getMem()); ?></div>
-                    </div> <?php echo $calcolatrice->memToHiddenDisplay();
+                    </div> <?php echo $calcolatrice->risToStrDisplay();
                         } elseif (isset($_POST['addMem'])) { ?>
                     <div id="display">
                         <div id="upperDisplay"><?php echo htmlspecialchars($calcolatrice->addMem($_POST["addMem"])); ?></div>
@@ -44,21 +47,21 @@
                         <div id="errorDisplay"></div>
                     </div>
                     <div id="dom-target" style="display: none;">
-                        <?php echo htmlspecialchars($output); ?></div> <?php
-                        echo $calcolatrice->risToStrDisplay();
-                                                                    }
-                                                                    include 'Calcolatrice/bottomCalcolatrice.php';
-                                                                } else {  ?>
+                        <?php echo htmlspecialchars($calcolatrice->getMem()); ?></div>
+                <?php echo $calcolatrice->memToHiddenDisplay();
+                        }
+                        include 'Calcolatrice/bottomCalcolatrice.php';
+                    } else {  ?>
                 <div class="calcolatrice-container">
-                <div id="display">
-                    <div id="upperDisplay"></div>
-                    <div id="lowerDisplay"></div>
-                    <div id="errorDisplay"></div>
+                    <div id="display">
+                        <div id="upperDisplay"></div>
+                        <div id="lowerDisplay"></div>
+                        <div id="errorDisplay"></div>
                     </div>
-                <?php 
-                include 'Calcolatrice/bottomCalcolatrice.php';
-                                                                }
-                                                                
+                <?php
+                        include 'Calcolatrice/bottomCalcolatrice.php';
+                    }
+
                 ?>
 
     </section>
