@@ -370,7 +370,6 @@ function risToStrDisplay() {
 
 function refreshDisplay() {
   document.getElementById('upperDisplay').innerHTML = strDisplay;
-  document.getElementById('lowerDisplay').innerHTML = opHidden.join("_");
   if (!checkString()) {
     document.getElementById('errorDisplay').innerHTML = "error";
   } else {

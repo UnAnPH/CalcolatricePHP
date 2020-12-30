@@ -169,7 +169,7 @@
 }
 /*#endregion*/
 
-#display{
+.display{
   border-style: solid;
   width: auto;
   height: 100px;
@@ -203,3 +203,4 @@
 .calcolatrice-container>div {
   background-color: rgba(255, 255, 255, 0.8);
 }
+

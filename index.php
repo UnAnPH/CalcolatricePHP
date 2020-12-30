@@ -23,27 +23,23 @@ session_start();
                 <?php if (isset($_POST['ris'])) { ?>
                     <div id="display">
                         <div id="upperDisplay"><?php echo htmlspecialchars($calcolatrice->evalString($_POST["ris"])); ?></div>
-                        <div id="lowerDisplay"></div>
                         <div id="errorDisplay"></div>
                     </div>
                 <?php echo $calcolatrice->risToStrDisplay();
                 } elseif (isset($_POST['setMem'])) { ?>
                     <div id="display">
                         <div id="upperDisplay"><?php echo htmlspecialchars($calcolatrice->setMem($_POST["setMem"])); ?></div>
-                        <div id="lowerDisplay"></div>
                         <div id="errorDisplay"></div>
                         <div id="HiddenDisplay" style="display: none;"><?php echo htmlspecialchars($calcolatrice->getMem()); ?></div>
                     </div> <?php echo $calcolatrice->risToStrDisplay();
                         } elseif (isset($_POST['addMem'])) { ?>
                     <div id="display">
                         <div id="upperDisplay"><?php echo htmlspecialchars($calcolatrice->addMem($_POST["addMem"])); ?></div>
-                        <div id="lowerDisplay"></div>
                         <div id="errorDisplay"></div>
                     </div><?php echo $calcolatrice->risToStrDisplay();
                         } elseif (isset($_POST['getMem'])) { ?>
                     <div id="display">
                         <div id="upperDisplay"></div>
-                        <div id="lowerDisplay"></div>
                         <div id="errorDisplay"></div>
                     </div>
                     <div id="dom-target" style="display: none;">

@@ -1,6 +1,6 @@
 <?php
 
-$_SESSION["mem"]; 
+$_SESSION["mem"];
 
 class calcolatrice
 {
@@ -14,7 +14,8 @@ class calcolatrice
         </script>';
     }
 
-    public function memToHiddenDisplay(){
+    public function memToHiddenDisplay()
+    {
         return '<script type="text/javascript">
         getMem();
         </script>';
@@ -34,18 +35,19 @@ class calcolatrice
     public function setMem(String $stringToCalc)
     {
         $this->memoria = $this->evalString($stringToCalc);
-        $_SESSION["mem"]= $this->memoria;
-        return $stringToCalc;
+        $_SESSION["mem"] = $this->memoria;
+        return str_replace("_", "", $stringToCalc);
     }
 
     public function addMem(String $stringToCalc)
     {
         $_SESSION["mem"] += $this->evalString($stringToCalc);
-        return $stringToCalc;
+        return str_replace("_", "", $stringToCalc);
     }
 
-    public function getMem(){
-        return $_SESSION["mem"]; 
+    public function getMem()
+    {
+        return $_SESSION["mem"];
     }
 
     //posso fare funzioni che eval va a chiamare
@@ -89,6 +91,36 @@ class calcolatrice
         return $ciao ** 2;
     }
 
+    public function myCos($numero){
+        $ris = eval("return " . $numero . ";");
+        return cos(deg2rad($ris));
+    }
+
+    public function mySin($numero){
+        $ris = eval("return " . $numero . ";");
+        return sin(deg2rad($ris));
+    }
+
+    public function myTan($numero){
+        $ris = eval("return " . $numero . ";");
+        return tan(deg2rad($ris));
+    }
+
+    public function myAcos($numero){
+        $ris = eval("return " . $numero . ";");
+        return acos(deg2rad($ris));
+    }
+
+    public function myAsin($numero){
+        $ris = eval("return " . $numero . ";");
+        return asin(deg2rad($ris));
+    }
+
+    public function myAtan($numero){
+        $ris = eval("return " . $numero . ";");
+        return atan(deg2rad($ris));
+    }
+
     public function changeString($string)
     {
         switch ($string) {
@@ -119,6 +151,25 @@ class calcolatrice
             case "rec":
                 return '$this->rec';
                 break;
+            case "cos":
+                return '$this->myCos';
+                break;
+            case "sin":
+                return '$this->mySin';
+                break;
+            case "tan":
+                return '$this->myTan';
+                break;
+            case "acos":
+                return '$this->myAcos';
+                break;
+            case "asin":
+                return '$this->myAsin';
+                break;
+            case "atan":
+                return '$this->myAtan';
+                break;
+
             default:
                 return $string;
                 break;

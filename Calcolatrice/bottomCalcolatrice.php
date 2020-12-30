@@ -42,7 +42,7 @@
              <div class="getMem">
                      <form action="index.php" method="POST">
                              <input type="hidden" id="getMem" name="getMem" value="" />
-                             <input type="submit" name="Mem" value="M" class="button" onclick="onClickGetMem()">
+                             <input type="submit" name="Mem" value="MEM" class="button" onclick="onClickGetMem()">
                      </form>
              </div>
              <div class="setMem">
