@@ -1,6 +1,6 @@
 <?php
 
-$_SESSION["mem"]=0;
+$_SESSION["mem"];
 
 class calcolatrice
 {

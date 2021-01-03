@@ -293,6 +293,7 @@ function onClickGetMem() {
   localStorage.setItem("strDisplayStorage", strDisplay);
   localStorage.setItem("opHiddenString", opHidden.join("_"));
   localStorage.setItem("opHiddenStringIndex", opHiddenIndex.toString());
+  
 }
 
 function getMem(){
@@ -301,8 +302,9 @@ function getMem(){
   strDisplay += div.textContent;
   // opHidden[opHiddenIndex] = parseFloat(div.textContent).toString();
   opHidden= localStorage.getItem("opHiddenString").split("_");
-  opHidden[parseInt(localStorage.getItem("opHiddenStringIndex"))+1]= div.textContent;
-  opHiddenIndex= localStorage.getItem("OpHiddenStringIndex");
+  opHiddenIndex= localStorage.getItem("opHiddenStringIndex");
+  opHiddenIndex= parseInt(opHiddenIndex)+1;
+  opHidden[opHiddenIndex]= div.textContent;
   operandoType = 1;
   refreshDisplay();
 }
@@ -375,7 +377,7 @@ function refreshDisplay() {
   } else {
     document.getElementById('errorDisplay').innerHTML = "";
   }
-  // document.getElementById('errorDisplay').innerHTML = opHidden.join();
+   document.getElementById('errorDisplay').innerHTML = opHidden.join();
 }
 
 function memToHiddenDisplay(){
