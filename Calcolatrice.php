@@ -21,6 +21,15 @@ class calcolatrice
         </script>';
     }
 
+    public function displayM(){
+        echo $_SESSION["mem"];
+        if(empty($_SESSION["mem"])){
+            return "";
+        }else{
+            return "M";
+        }
+    }
+
     public function evalString(String $stringToCalc)
     {
         $array = explode("_", $stringToCalc);
