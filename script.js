@@ -1,6 +1,6 @@
 //variables Definition
 
-var operazioniValide = ['+', '-', '*', '/', 'cos', 'sin', 'tan', 'acos', 'asin', 'atan', 'log', 'ln', 'fact', 'radx', 'rad2', 'pow', 'pow2', 'conv', '(', ')', ','];
+var operazioniValide = ['+', '-', '*', '/', 'cos', 'sin', 'tan', 'acos', 'asin', 'atan', 'log', 'ln', 'fact', 'radx', 'rad2', 'pow', 'pow2','rec',  '(', ')', ','];
 
 var strDisplay = "";
 var opHidden = [];
@@ -131,7 +131,7 @@ function onClickRec() {
   if (operandoType != 1) { opHiddenIndex++; }
   strDisplay += "rec(";
   operandoType = 3;
-  insertOpHidden("rec");
+  insertOpSpec("rec");
   refreshDisplay();
 }
 function onClickpiumeno() {
@@ -375,6 +375,7 @@ function refreshDisplay() {
   } else {
     document.getElementById('errorDisplay').innerHTML = "";
   }
+  // document.getElementById('errorDisplay').innerHTML = opHidden.join();
 }
 
 function memToHiddenDisplay(){

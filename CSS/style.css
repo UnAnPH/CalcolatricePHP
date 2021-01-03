@@ -136,10 +136,6 @@
   grid-area: chiudiPar;
 }
 
-.convInRad {
-  grid-area: convInRad;
-}
-
 .esp {
   grid-area: esp;
 }
@@ -169,7 +165,7 @@
 }
 /*#endregion*/
 
-.display{
+#display{
   border-style: solid;
   width: auto;
   height: 100px;
@@ -195,7 +191,7 @@
 
 .calcolatrice-container {
   display: grid;
-  grid-template-areas: 'display display display display display' 'esp convInRad apriPar chiudiPar piumeno' 'coseno seno tangente arcocoseno arcoseno' 'arcotangente logaritmo logaritmoNaturale clearAll clearOne' 'fattoriale getMem setMem addMem divisione' 'radiceEnnesima sette otto nove moltiplicazione' 'radiceQuadrata quattro cinque sei sottrazione' 'elevamentoEnnesimo uno due tre addizione' 'elevamentoQuadrato reciproco zero virgola uguale';
+  grid-template-areas: 'display display display display display' 'esp vuoto apriPar chiudiPar piumeno' 'coseno seno tangente arcocoseno arcoseno' 'arcotangente logaritmo logaritmoNaturale clearAll clearOne' 'fattoriale getMem setMem addMem divisione' 'radiceEnnesima sette otto nove moltiplicazione' 'radiceQuadrata quattro cinque sei sottrazione' 'elevamentoEnnesimo uno due tre addizione' 'elevamentoQuadrato reciproco zero virgola uguale';
   grid-column-gap: 10px;
   width: 30%;
 }

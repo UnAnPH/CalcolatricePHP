@@ -34,7 +34,6 @@
              <div class="virgola"><button class="button" onclick="onClickVirg()">.</button></div>
              <div class="apriPar"><button class="button" onclick="onClickOpenPar()">(</button></div>
              <div class="chiudiPar"><button class="button" onclick="onClickClosePar()">)</button></div>
-             <div class="convInRad"><button class="button" onclick="onClickConvInRad()">°>rad</button></div>
              <div class="esp"><button class="button" id="esp" onclick="onClickEsp()" disabled>esp</button></div>
              <!--  #divPulsanti   -->
 

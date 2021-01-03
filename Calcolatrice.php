@@ -1,6 +1,6 @@
 <?php
 
-$_SESSION["mem"];
+$_SESSION["mem"]=0;
 
 class calcolatrice
 {
@@ -93,32 +93,32 @@ class calcolatrice
 
     public function myCos($numero){
         $ris = eval("return " . $numero . ";");
-        return cos(deg2rad($ris));
+        return round(cos(deg2rad($ris)), 3);
     }
 
     public function mySin($numero){
         $ris = eval("return " . $numero . ";");
-        return sin(deg2rad($ris));
+        return round(sin(deg2rad($ris)), 3);
     }
 
     public function myTan($numero){
         $ris = eval("return " . $numero . ";");
-        return tan(deg2rad($ris));
+        return round(tan(deg2rad($ris)), 3);
     }
 
     public function myAcos($numero){
         $ris = eval("return " . $numero . ";");
-        return acos(deg2rad($ris));
+        return rad2deg(acos($ris));
     }
 
     public function myAsin($numero){
         $ris = eval("return " . $numero . ";");
-        return asin(deg2rad($ris));
+        return rad2deg(asin($ris));
     }
 
     public function myAtan($numero){
         $ris = eval("return " . $numero . ";");
-        return atan(deg2rad($ris));
+        return rad2deg(atan($ris));
     }
 
     public function changeString($string)
