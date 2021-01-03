@@ -1,6 +1,6 @@
 <?php
 
-$_SESSION["mem"]=0;
+$_SESSION["mem"];
 
 class calcolatrice
 {
@@ -19,6 +19,14 @@ class calcolatrice
         return '<script type="text/javascript">
         getMem();
         </script>';
+    }
+
+    public function displayM(){
+        if(empty($_SESSION["mem"])){
+            return "";
+        }else{
+            return "M";
+        }
     }
 
     public function evalString(String $stringToCalc)
