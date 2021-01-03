@@ -293,18 +293,22 @@ function onClickGetMem() {
   localStorage.setItem("strDisplayStorage", strDisplay);
   localStorage.setItem("opHiddenString", opHidden.join("_"));
   localStorage.setItem("opHiddenStringIndex", opHiddenIndex.toString());
-  
+  localStorage.setItem("openParIndex", openParIndex.toString());
+  localStorage.setItem("closeParIndex",closeParIndex.toString());
 }
 
 function getMem(){
   var div = document.getElementById("dom-target");
   strDisplay= localStorage.getItem("strDisplayStorage");
-  strDisplay += div.textContent;
+  strDisplay += div.textContent ;
   // opHidden[opHiddenIndex] = parseFloat(div.textContent).toString();
   opHidden= localStorage.getItem("opHiddenString").split("_");
-  opHiddenIndex= localStorage.getItem("opHiddenStringIndex");
-  opHiddenIndex= parseInt(opHiddenIndex)+1;
-  opHidden[opHiddenIndex] = div.textContent.toString();
+  opHiddenIndex= parseInt(localStorage.getItem("opHiddenStringIndex"))+1;
+  
+  opHidden[opHiddenIndex] = parseInt(div.textContent).toString();
+  openParIndex= parseInt(localStorage.getItem("openParIndex"));
+  closeParIndex= parseInt(localStorage.getItem("closeParIndex"));
+
   operandoType = 1;
   refreshDisplay();
 }
@@ -377,7 +381,7 @@ function refreshDisplay() {
   } else {
     document.getElementById('errorDisplay').innerHTML = "";
   }
-   document.getElementById('errorDisplay').innerHTML = opHidden.join("_");
+  //  document.getElementById('errorDisplay').innerHTML = opHidden.join("_");
 }
 
 function memToHiddenDisplay(){
@@ -412,7 +416,7 @@ function checkString() {
   var i = 1;
   var error = false;
   while (i < opHidden.length && !error) {
-    if (!(isNumeric(opHidden[i]) || operazioniValide.indexOf(opHidden[i]) > -1 )) {
+    if (!(isNumeric(opHidden[i]) || operazioniValide.indexOf(opHidden[i]) > -1 )||opHidden[i]=="" ) {
       error = true;
     }
     //  alert("1"+isNumeric(opHidden[i]));
@@ -420,8 +424,8 @@ function checkString() {
     // alert("3:"+opHidden[i]);
     i++;
   }
-  // alert(openParIndex);
-  // alert(closeParIndex);
+  //  alert("1:"+openParIndex);
+  // alert("2:"+closeParIndex);
   if (openParIndex != closeParIndex) {
     error = true;
   }

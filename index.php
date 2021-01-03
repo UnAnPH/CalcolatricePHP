@@ -16,6 +16,7 @@ session_start();
 
     <?php
         $calcolatrice = new calcolatrice();
+        $_SESSION["mem"];
         if ($_POST) { ?>
             <div class="calcolatrice-container">
                 <?php if (isset($_POST['ris'])) { ?>
