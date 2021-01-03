@@ -167,12 +167,20 @@
 
 #display{
   border-style: solid;
-  width: auto;
+  max-width: 600px;
   height: 100px;
+  overflow: auto;
 }
 
 #upperDisplay{
+  line-height: 50px;
   height: 80%;
+  text-align:justify;
+  padding: 5px;
+}
+
+#errorDisplay{
+  color: red;
 }
 
 #errorDisplay{
@@ -185,6 +193,7 @@
   height: 20%;
   width: 50%;
   float: right;
+  text-align: right;
 }
 
 .button {

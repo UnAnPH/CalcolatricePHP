@@ -1,7 +1,5 @@
 <?php
 
-$_SESSION["mem"];
-
 class calcolatrice
 {
 
@@ -22,11 +20,7 @@ class calcolatrice
     }
 
     public function displayM(){
-<<<<<<< HEAD
-        if(empty($_SESSION["mem"])){
-=======
         if(empty($_SESSION["mem"])||($_SESSION["mem"]==0)){
->>>>>>> main
             return "";
         }else{
             return "M";

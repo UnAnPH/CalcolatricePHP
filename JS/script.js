@@ -293,31 +293,22 @@ function onClickGetMem() {
   localStorage.setItem("strDisplayStorage", strDisplay);
   localStorage.setItem("opHiddenString", opHidden.join("_"));
   localStorage.setItem("opHiddenStringIndex", opHiddenIndex.toString());
-<<<<<<< HEAD:script.js
 
-=======
   localStorage.setItem("openParIndex", openParIndex.toString());
   localStorage.setItem("closeParIndex",closeParIndex.toString());
->>>>>>> main:JS/script.js
 }
 
 function getMem(){
   var div = document.getElementById("dom-target");
   strDisplay= localStorage.getItem("strDisplayStorage");
   strDisplay += div.textContent ;
-  // opHidden[opHiddenIndex] = parseFloat(div.textContent).toString();
   opHidden= localStorage.getItem("opHiddenString").split("_");
-<<<<<<< HEAD:script.js
-  opHiddenIndex= ParseInt(localStorage.getItem("OpHiddenStringIndex"));
-  opHidden[opHiddenIndex+1]= div.textContent;
-=======
   opHiddenIndex= parseInt(localStorage.getItem("opHiddenStringIndex"))+1;
   
   opHidden[opHiddenIndex] = parseInt(div.textContent).toString();
   openParIndex= parseInt(localStorage.getItem("openParIndex"));
   closeParIndex= parseInt(localStorage.getItem("closeParIndex"));
 
->>>>>>> main:JS/script.js
   operandoType = 1;
   refreshDisplay();
 }
@@ -390,11 +381,7 @@ function refreshDisplay() {
   } else {
     document.getElementById('errorDisplay').innerHTML = "";
   }
-<<<<<<< HEAD:script.js
-  document.getElementById('errorDisplay').innerHTML = opHidden.join();
-=======
   //  document.getElementById('errorDisplay').innerHTML = opHidden.join("_");
->>>>>>> main:JS/script.js
 }
 
 function memToHiddenDisplay(){
@@ -432,13 +419,8 @@ function checkString() {
     if (!(isNumeric(opHidden[i]) || operazioniValide.indexOf(opHidden[i]) > -1 )||opHidden[i]=="" ) {
       error = true;
     }
-    //  alert("1"+isNumeric(opHidden[i]));
-    // alert("2:"+(operazioniValide.indexOf(opHidden[i])>-1));
-    // alert("3:"+opHidden[i]);
     i++;
   }
-  //  alert("1:"+openParIndex);
-  // alert("2:"+closeParIndex);
   if (openParIndex != closeParIndex) {
     error = true;
   }
