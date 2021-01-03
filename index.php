@@ -5,7 +5,7 @@ session_start();
 
 <head>
     <link rel="stylesheet" href="CSS/style.css">
-    <script src="script.js"></script>
+    <script src="JS/script.js"></script>
     <?php include_once 'Calcolatrice.php'; ?>
 </head>
 
@@ -14,10 +14,9 @@ session_start();
 
     <section>
 
-        <?php
+    <?php
         $calcolatrice = new calcolatrice();
-        //echo htmlspecialchars(evalString($_POST["ris"]));
-        //echo "\n".htmlspecialchars($_POST["ris"]) 
+        $_SESSION["mem"];
         if ($_POST) { ?>
             <div class="calcolatrice-container">
                 <?php if (isset($_POST['ris'])) { ?>
@@ -50,20 +49,19 @@ session_start();
                         <?php echo htmlspecialchars($calcolatrice->getMem()); ?></div>
                 <?php echo $calcolatrice->memToHiddenDisplay();
                         }
-                        include 'Calcolatrice/bottomCalcolatrice.php';
+                        include 'bottomCalcolatrice.php';
                     } else {  ?>
                 <div class="calcolatrice-container">
                     <div id="display">
                         <div id="upperDisplay"></div>
-                        <div id="lowerDisplay"></div>
                         <div id="errorDisplay"></div>
+                        <div id="mDisplay"></div>
                     </div>
                 <?php
-                        include 'Calcolatrice/bottomCalcolatrice.php';
+                        include 'bottomCalcolatrice.php';
                     }
 
                 ?>
-
     </section>
     <footer>
 
