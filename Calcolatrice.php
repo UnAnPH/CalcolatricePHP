@@ -22,7 +22,6 @@ class calcolatrice
     }
 
     public function displayM(){
-        echo $_SESSION["mem"];
         if(empty($_SESSION["mem"])){
             return "";
         }else{

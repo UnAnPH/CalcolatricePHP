@@ -304,7 +304,7 @@ function getMem(){
   opHidden= localStorage.getItem("opHiddenString").split("_");
   opHiddenIndex= localStorage.getItem("opHiddenStringIndex");
   opHiddenIndex= parseInt(opHiddenIndex)+1;
-  opHidden[opHiddenIndex]= div.textContent;
+  opHidden[opHiddenIndex] = div.textContent.toString();
   operandoType = 1;
   refreshDisplay();
 }
@@ -377,7 +377,7 @@ function refreshDisplay() {
   } else {
     document.getElementById('errorDisplay').innerHTML = "";
   }
-   document.getElementById('errorDisplay').innerHTML = opHidden.join();
+   document.getElementById('errorDisplay').innerHTML = opHidden.join("_");
 }
 
 function memToHiddenDisplay(){
@@ -412,12 +412,12 @@ function checkString() {
   var i = 1;
   var error = false;
   while (i < opHidden.length && !error) {
-    if (!(isNumeric(opHidden[i]) || operazioniValide.indexOf(opHidden[i]) > -1 || opHidden[i] == "")) {
+    if (!(isNumeric(opHidden[i]) || operazioniValide.indexOf(opHidden[i]) > -1 )) {
       error = true;
     }
-    //alert("1"+isNumeric(opHidden[i]));
-    //alert("2:"+(operazioniValide.indexOf(opHidden[i])>-1));
-    //alert("3:"+opHidden[i]);
+    //  alert("1"+isNumeric(opHidden[i]));
+    // alert("2:"+(operazioniValide.indexOf(opHidden[i])>-1));
+    // alert("3:"+opHidden[i]);
     i++;
   }
   // alert(openParIndex);

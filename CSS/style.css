@@ -171,6 +171,22 @@
   height: 100px;
 }
 
+#upperDisplay{
+  height: 80%;
+}
+
+#errorDisplay{
+  height: 20%;
+  width: 50%;
+  float: left;
+}
+
+#MDisplay{
+  height: 20%;
+  width: 50%;
+  float: right;
+}
+
 .button {
   background-color: #4CAF50;
   border: none;
